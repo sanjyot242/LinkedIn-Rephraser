@@ -20,26 +20,26 @@
 
       rephraseBtn.addEventListener('click', async () => {
         const originalText = messageBox.value;
-        // if (originalText.trim()) {
-        //   const response = await fetch(
-        //     'https://api.openai.com/v1/completions',
-        //     {
-        //       method: 'POST',
-        //       headers: {
-        //         'Content-Type': 'application/json',
-        //         Authorization: 'Bearer YOUR_OPENAI_API_KEY',
-        //       },
-        //       body: JSON.stringify({
-        //         model: 'gpt-4',
-        //         prompt: `Rephrase this professionally: ${originalText}`,
-        //         max_tokens: 100,
-        //       }),
-        //     }
-        //   );
+        if (originalText.trim()) {
+          const response = await fetch(
+            'https://api.openai.com/v1/completions',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer YOUR_OPENAI_API_KEY',
+              },
+              body: JSON.stringify({
+                model: 'gpt-4',
+                prompt: `Rephrase this professionally: ${originalText}`,
+                max_tokens: 100,
+              }),
+            }
+          );
 
-        //   const data = await response.json();
-        //   messageBox.value = data.choices[0].text.trim();
-        // }
+          const data = await response.json();
+          messageBox.value = data.choices[0].text.trim();
+        }
         console.log(originalText);
       });
     }
