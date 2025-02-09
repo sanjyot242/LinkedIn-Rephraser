@@ -46,4 +46,23 @@ function injectRephraseButton() {
   }
 }
 
-setInterval(injectRephraseButton, 3000); // Check for message box every 3 seconds
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+      // Check if the new node contains the message box
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        // You can refine the selector as needed
+        if (node.matches('textarea[name="message"]') || node.querySelector('textarea[name="message"]')) {
+          injectRephraseButton();
+        }
+      }
+    });
+  });
+});
+
+// Start observing the document body for added nodes
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
