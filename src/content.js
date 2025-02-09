@@ -1,8 +1,7 @@
-import axios from 'axios';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 });
 
@@ -52,7 +51,10 @@ const observer = new MutationObserver((mutations) => {
       // Check if the new node contains the message box
       if (node.nodeType === Node.ELEMENT_NODE) {
         // You can refine the selector as needed
-        if (node.matches('textarea[name="message"]') || node.querySelector('textarea[name="message"]')) {
+        if (
+          node.matches('textarea#custom-message') ||
+          node.querySelector('textarea#custom-message')
+        ) {
           injectRephraseButton();
         }
       }
@@ -63,6 +65,5 @@ const observer = new MutationObserver((mutations) => {
 // Start observing the document body for added nodes
 observer.observe(document.body, {
   childList: true,
-  subtree: true
+  subtree: true,
 });
-

@@ -3,18 +3,18 @@
   "name": "LinkedIn Message Rephraser",
   "version": "1.0",
   "description": "Rephrase LinkedIn messages instantly using AI.",
-  "permissions": ["storage","activeTab", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": ["https://www.linkedin.com/*"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "index.html",
     "default_icon": {
-      "16": "icon-16.png",
-      "32": "icon-32.png",
-      "48": "icon.png",
-      "128": "icon.png"
+      "16": "icons/icon.png",
+      "32": "icons/icon.png",
+      "48": "icons/icon.png",
+      "128": "icons/icon.png"
     }
   },
   "content_scripts": [
